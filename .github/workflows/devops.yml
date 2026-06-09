@@ -13,6 +13,9 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v2
 
+    - name: Enable IPv6 on GitHub Runner
+      run: sudo apt-get update && sudo apt-get install -y miredo
+
     - name: Deploy on Excloud Server
       uses: appleboy/ssh-action@v1.0.3
       with:
@@ -23,4 +26,4 @@ jobs:
           cd /home/ubuntu/DevOps-CICD
           git pull
           npm install
-          npm run dev
+          pm2 restart 0
