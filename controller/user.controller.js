@@ -1,5 +1,6 @@
+import { getUserById } from "../services/user.service"
 
 
 const getUser = (req, res) => {
-    console.log("getUser called");
+    await getUserById(res.body.userId)
 }
