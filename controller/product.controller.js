@@ -1,7 +1,6 @@
 
-
+import * as productService from "../services/product.service.js";
 
 export const getProduct = async (req, res) => {
-    console.log(req.body)
-    console.log("getProduct called")
+    await productService.getProduct()
 }
