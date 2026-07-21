@@ -1,9 +1,6 @@
+import { orders } from "../data/db.js";
 
+export const getOrder = async () => orders;
 
-export const getOrder = async () => {
-    console.log("Get Order");
-}
-
-export const getOrderById = async () => {
-    console.log("Get Order By Id");
-}
+export const getOrderById = async (orderId) =>
+    orders.find((order) => String(order.id) === String(orderId));
