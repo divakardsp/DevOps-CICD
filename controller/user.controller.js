@@ -15,7 +15,23 @@ export const getUserById = async (req, res) => {
 };
 
 export const createUser = async (req, res) => {
-    const createdUser = await userService.createUser(req.body);
+    const { name, email } = req.body ?? {};
+
+    if (
+        typeof name !== "string" ||
+        !name.trim() ||
+        typeof email !== "string" ||
+        !email.trim()
+    ) {
+        return res
+            .status(400)
+            .json({ message: "Valid name and email are required" });
+    }
+
+    const createdUser = await userService.createUser({
+        name: name.trim(),
+        email: email.trim(),
+    });
 
     res.status(201).json(createdUser);
 };

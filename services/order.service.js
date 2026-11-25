@@ -31,10 +31,7 @@ export const updateOrder = async (orderId, orderData) => {
         return null;
     }
 
-    order.to = orderData.to ?? order.to;
-    order.from = orderData.from ?? order.from;
-    order.status = orderData.status ?? order.status;
-    order.payment = orderData.payment ?? order.payment;
+    Object.assign(order, orderData);
 
     return order;
 };
